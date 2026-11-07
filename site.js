@@ -356,7 +356,7 @@ for (const link of document.querySelectorAll("[data-link]")) {
     releaseLinks.set(platform, link);
     const state = document.querySelector('[data-release="' + platform + '"]');
     state.dataset.ready = "";
-    state.textContent = platform === "ios" ? "TestFlight 測試中" : "可下載";
+    state.textContent = platform === "ios" ? "App Store 已上架" : "可下載";
   } catch {
     // Keep the release state visible while the link is unset or invalid.
   }
