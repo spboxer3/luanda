@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14110e">
+  <meta name="description" content="亂打注音是給 iPhone、Mac 和 Windows 的大千注音輸入法。裝置上的 AI 協助修正按錯的注音，也可以省略聲調。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="亂打注音｜打錯注音，也能打對字。">
+  <meta property="og:description" content="照平常的大千注音打。按錯鍵、漏打聲調，亂打注音用裝置上的 AI 幫你找回想打的字。">
+  <link rel="icon" href="assets/icon.webp" type="image/webp">
+  <link rel="stylesheet" href="style.css">
+  <script src="site-config.js" defer></script>
+  <script src="site.js" defer></script>
+  <title>亂打注音｜打錯注音，也能打對字。</title>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="top" id="site-header">
+    <div class="container top-inner">
+      <h1 id="site-title"><a class="brand" href="#top"><img src="assets/icon.webp" alt="" width="36" height="36">亂打注音輸入法</a></h1>
+      <nav aria-label="主要導覽">
+        <a href="#download">下載與安裝</a>
+        <a href="#faq">常見問題</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero-band" aria-labelledby="site-title">
+      <div class="hero-frame">
+        <div class="hero-art" aria-hidden="true"></div>
+        <div class="container hero" data-screen="typo" data-copy-side="left">
+          <div class="hero-copy">
+            <div id="hero-message">
+              <div data-copy="typo" aria-hidden="false">
+                <h2>打錯注音，<span>也能打對字</span></h2>
+                <p>照平常的大千注音打。碰到隔壁鍵，亂打會看前後文，找出可能的候選。</p>
+              </div>
+              <div data-copy="notone" aria-hidden="true">
+                <h2>省略聲調，<span>整句照樣打</span></h2>
+                <p>趕著回訊息時，可以省略聲調。整句只打注音，亂打也會幫你找出候選字詞。</p>
+              </div>
+              <div data-copy="learned" aria-hidden="true">
+                <h2>常用詞，<span>自然排前面</span></h2>
+                <p>人名和口頭禪打久了，會排在同音詞前面。下次打到同樣的注音，就能更快選到。</p>
+              </div>
+              <div data-copy="delete" aria-hidden="true">
+                <h2>連刪按成 ㄥ，<span>也能接著刪</span></h2>
+                <p>連刪按偏成 ㄥ，亂打會收回誤輸的注音，接著刪字。</p>
+              </div>
+            </div>
+            <a class="button" id="platform-cta" href="#download"><span>取得亂打</span><svg class="button-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v9m-4-4 4 4 4-4"/></svg></a>
+          </div>
+          <figure class="gallery">
+            <div class="gallery-stage" data-screen="typo">
+              <aside class="gallery-note" id="gallery-note" aria-label="截圖說明">
+                <div data-note="typo">
+                  <h2>按錯鍵也能接著打</h2>
+                  <p>第一個「謝」的 ㄝ 按成 ㄜ。亂打看整句找回「謝謝你的幫忙」，並用橘色標出修正的候選。</p>
+                </div>
+                <div data-note="notone" hidden>
+                  <h2>聲調來不及打也能選字</h2>
+                  <p>只打「ㄋㄧㄏㄠ」，候選裡就有「你好」。打得快時，可以省下逐字按聲調的動作。</p>
+                </div>
+                <div data-note="learned" hidden>
+                  <h2>常用詞不用每次重找</h2>
+                  <p>「他們」和「她們」同音。常選「她們」，亂打就會把它排到前面，並用藍色標示。</p>
+                </div>
+                <div data-note="delete" hidden>
+                  <h2>想連刪，卻按成 ㄥ？</h2>
+                  <p>ㄥ 就在刪除鍵左邊。連按兩下 ㄥ，或交錯快按這兩個鍵，亂打會收回誤輸的 ㄥ，繼續刪字。</p>
+                </div>
+              </aside>
+              <svg class="gallery-connector" aria-hidden="true" focusable="false"><path/></svg>
+              <div class="phone-rotor">
+                <div class="phone-display">
+                  <img id="phone-screen" src="assets/ios-typo.webp" width="704" height="1528" alt="iPhone 試打截圖。第一個謝的注音打錯，候選列以橘色顯示「謝謝你的幫忙」。" aria-describedby="gallery-note" fetchpriority="high">
+                  <span class="screen-focus" aria-hidden="true"><span></span></span>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <div class="gallery-controls" role="group" aria-label="切換 iPhone 試打截圖" hidden>
+            <button type="button" data-screen="typo" aria-pressed="true" aria-controls="phone-screen"><span>按錯鍵</span></button>
+            <button type="button" data-screen="notone" data-copy-side="right" aria-pressed="false" aria-controls="phone-screen"><span>省略聲調</span></button>
+            <button type="button" data-screen="learned" aria-pressed="false" aria-controls="phone-screen"><span>常用詞</span></button>
+            <button type="button" data-screen="delete" data-copy-side="right" aria-pressed="false" aria-controls="phone-screen"><span>連刪</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features-band" aria-label="功能">
+      <div class="container features">
+        <div>
+          <svg class="feature-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M4 7h20M4 14h9m-9 7h14m-1-7 3 3 4-5"/></svg>
+          <h2>整句或逐詞選字</h2>
+          <p>可以一次送出整句，也可以逐詞確認。選定一個詞後，亂打會重新推算後面的候選。</p>
+        </div>
+        <div>
+          <svg class="feature-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M5 14h18m-14-4-4 4 4 4m10-8 4 4-4 4m-5-13v4m0 10v4"/></svg>
+          <h2>空白鍵移游標</h2>
+          <p>iPhone 上按住空白鍵左右滑動，就能回到注音中間補打或修改。</p>
+        </div>
+        <div>
+          <svg class="feature-icon" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect x="6" y="12" width="16" height="11" rx="2"/><path d="M9 12V9a5 5 0 0 1 10 0v3m-5 5v2"/></svg>
+          <h2>離線也能選字</h2>
+          <p>選字與修正都在裝置上運算，打字內容留在本機。iPhone 上也能在關閉「完整取用」時使用 AI 修正。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="download-band">
+      <div class="container section">
+        <h2>下載與安裝</h2>
+        <div class="platforms">
+          <article class="platform platform-featured" id="iphone">
+            <div class="platform-heading"><h3>iPhone</h3><p>iOS 17 以上</p></div>
+            <p class="release-state" data-release="ios">需 TestFlight 邀請</p>
+            <a class="button release-link" data-link="ios" hidden><span>在 TestFlight 開啟</span><svg class="button-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12l8-8M6 4h6v6"/></svg></a>
+            <details><summary>安裝步驟</summary>
+              <ol><li>安裝 Apple 的 TestFlight，開啟收到的邀請連結並安裝「亂打注音」。</li><li>到「設定 → 一般 → 鍵盤 → 鍵盤 → 新增鍵盤⋯」，選擇「亂打注音」。</li><li>在文字欄位按地球鍵切換。也可以先在 App 的「試打」分頁體驗。</li></ol>
+            </details>
+          </article>
+          <article class="platform" id="mac">
+            <div class="platform-heading"><h3>macOS</h3><p>macOS 14 以上、Apple 晶片</p></div>
+            <p class="release-state" data-release="macos">尚未公開</p>
+            <a class="button release-link" data-link="macos" hidden><span>下載 macOS Apple 晶片版</span><svg class="button-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v9m-4-4 4 4 4-4"/></svg></a>
+            <details><summary>安裝步驟</summary>
+              <ol><li>開啟 <code>.dmg</code>，把 LuandaIME 拖進「Input Methods」。</li><li>登出再登入，開啟「系統設定 → 鍵盤 → 文字輸入 → 輸入方式 → 編輯」。</li><li>在「繁體中文」新增「亂打注音」，按 <kbd>Control</kbd>＋<kbd>空白</kbd>切換。</li></ol>
+            </details>
+          </article>
+          <article class="platform" id="windows">
+            <div class="platform-heading"><h3>Windows</h3><p>Windows 10 或 11，x64</p></div>
+            <p class="release-state" data-release="windows">尚未公開</p>
+            <a class="button release-link" data-link="windows" hidden><span>下載 Windows x64 版</span><svg class="button-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v9m-4-4 4 4 4-4"/></svg></a>
+            <details><summary>安裝步驟</summary>
+              <ol><li>執行 LuandaSetup 安裝程式，允許「使用者帳戶控制」提示。</li><li>登出再登入，按 <kbd>Win</kbd>＋<kbd>空白</kbd>選擇「中文（台灣）— 亂打注音」。</li><li>若沒看到亂打注音，到「時間與語言 → 語言與地區 → 中文（台灣）→ 語言選項」新增鍵盤。</li></ol>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq-band">
+      <div class="container section faq">
+        <h2>常見問題</h2>
+        <div>
+          <details><summary>橘色和藍色候選代表什麼？</summary><p>橘色代表 AI 嘗試修正了輸入的注音，藍色代表你常選的字詞。選定候選後才會送出。</p></details>
+          <details><summary>iPhone 一定要開啟「完整取用」嗎？</summary><p>一般打字和 AI 修正可以直接使用。開啟「完整取用」後，鍵盤與 App 可以共用個人詞庫，也能使用按鍵震動和三種按鍵聲。</p></details>
+          <details><summary>安裝後找不到亂打注音怎麼辦？</summary><p>在 iPhone 請先到系統設定新增鍵盤。Mac 和 Windows 請先登出再登入，再依照<a href="#download">各平台的安裝步驟</a>切換輸入法。</p></details>
+          <details><summary>怎麼回報問題？</summary><p>請寄信到 <a href="mailto:luanda@spinboxer.com">luanda@spinboxer.com</a>。使用 iPhone 測試版時，也可以在 TestFlight 選擇「傳送 Beta 版回饋」。遇到選字問題時，可以附上打進去的注音、實際候選和原本想打的字。</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <a href="#top">© 2026 亂打注音</a>
+      <a href="mailto:luanda@spinboxer.com">問題回報</a>
+      <a href="privacy.html">iOS 隱私權政策</a>
+    </div>
+  </footer>
+</body>
+</html>
