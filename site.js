@@ -22,6 +22,7 @@ const altText = {
   notone: "iPhone 試打截圖。輸入沒有聲調的 ㄋㄧㄏㄠ，第一個候選是「你好」。",
   learned: "iPhone 試打截圖。輸入 ㄊㄚㄇㄣˊ，候選列以藍色把「她們」排在第一位。",
   delete: "iPhone 試打截圖。鍵盤右下角的 ㄥ 和刪除鍵相鄰，兩個鍵已框出。",
+  swipe: "iPhone 試打截圖。示意路徑依序滑過 ㄋ、ㄧ、ㄏ、ㄠ，第一個候選是「你好」。",
 };
 let selected = "typo";
 let flip;
@@ -50,8 +51,12 @@ function finishFlip() {
   galleryStage.classList.remove("is-flipping");
 }
 
+function screenSource(id) {
+  return "assets/ios-" + (id === "swipe" ? "notone" : id) + ".webp";
+}
+
 function showScreen(id) {
-  screen.src = "assets/ios-" + id + ".webp";
+  screen.src = screenSource(id);
   screen.alt = altText[id];
   hero.dataset.screen = id;
   hero.dataset.copySide = copySides[id];
@@ -156,9 +161,9 @@ if ("ResizeObserver" in window) {
 }
 window.addEventListener("resize", positionConnector);
 window.addEventListener("load", () => {
-  for (const id of slides.slice(1)) {
+  for (const source of new Set(slides.slice(1).map(screenSource))) {
     const preload = new Image();
-    preload.src = "assets/ios-" + id + ".webp";
+    preload.src = source;
   }
 }, { once: true });
 
@@ -339,7 +344,6 @@ if ("IntersectionObserver" in window) {
   }).observe(heroFrame);
 }
 
-const releaseLinks = new Map();
 for (const link of document.querySelectorAll("[data-link]")) {
   const platform = link.dataset.link;
   const url = window.LUANDA_RELEASES?.[platform];
@@ -353,7 +357,6 @@ for (const link of document.querySelectorAll("[data-link]")) {
     if (!local && !secure) continue;
     link.href = destination.href;
     link.hidden = false;
-    releaseLinks.set(platform, link);
     const state = document.querySelector('[data-release="' + platform + '"]');
     state.dataset.ready = "";
     state.textContent = platform === "ios" ? "App Store 已上架" : "可下載";
@@ -361,61 +364,3 @@ for (const link of document.querySelectorAll("[data-link]")) {
     // Keep the release state visible while the link is unset or invalid.
   }
 }
-
-const platformDetails = {
-  ios: { id: "iphone", view: "查看 iPhone 版" },
-  macos: { id: "mac", view: "查看 macOS Apple 晶片版" },
-  windows: { id: "windows", view: "查看 Windows x64 版" },
-};
-
-function visitorPlatform() {
-  const ua = navigator.userAgent;
-  const platform = navigator.userAgentData?.platform?.toLowerCase();
-  if (/\biPhone\b/i.test(ua)) return "ios";
-  if (/\b(?:iPad|iPod|Android)\b/i.test(ua)) return null;
-  if (platform === "windows" || (!platform && /\bWindows NT\b/i.test(ua))) return "windows";
-  if (platform === "macos" || (!platform && /\bMacintosh\b/i.test(ua))) {
-    // iPad desktop browsing can present a Mac user agent.
-    return navigator.maxTouchPoints > 1 ? null : "macos";
-  }
-  return null;
-}
-
-async function setPlatformCta() {
-  const platform = visitorPlatform();
-  if (!platform) return;
-  const cta = document.querySelector("#platform-cta");
-  const label = cta.querySelector("span");
-  const details = platformDetails[platform];
-  const release = releaseLinks.get(platform);
-  let compatible = platform === "ios" ? true : null;
-  const hints = navigator.userAgentData;
-  if (platform !== "ios" && hints?.getHighEntropyValues) {
-    try {
-      const { architecture, bitness, wow64 } = await hints.getHighEntropyValues(["architecture", "bitness", "wow64"]);
-      if (platform === "macos") {
-        if (architecture === "arm") compatible = true;
-        if (architecture === "x86") compatible = false;
-      } else if (architecture === "arm" || (bitness === "32" && wow64 === false)) {
-        compatible = false;
-      } else if (architecture === "x86" && (bitness === "64" || wow64 === true)) {
-        compatible = true;
-      }
-    } catch {
-      // The platform guide also works when the browser withholds architecture.
-    }
-  }
-  if (compatible === false) return;
-
-  if (release && compatible) {
-    const releaseLabel = release.querySelector("span");
-    cta.href = release.href;
-    label.textContent = releaseLabel.textContent;
-    cta.querySelector("svg").replaceWith(release.querySelector("svg").cloneNode(true));
-  } else {
-    cta.href = "#" + details.id;
-    label.textContent = details.view;
-  }
-}
-
-setPlatformCta();
